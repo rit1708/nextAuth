@@ -6,21 +6,9 @@ import GoogleProvider from "next-auth/providers/google";
 export const authOptions = {
   providers: [
     AppleProvider({
-      clientId: process.env.APPLE_CLIENT_ID,
-      clientSecret: process.env.APPLE_SECRET,
-      redirectURI: 'http://localhost:3000/',
-
+      clientId: process.env.APPLE_ID,
+      clientSecret: process.env.APPLE_PRIVATE_KEY,
     }),
-    // AppleProvider({
-    //   clientId: process.env.APPLE_ID,
-    //   clientSecret: {
-    //     appleId: process.env.APPLE_ID,
-    //     privateKey: process.env.APPLE_PRIVATE_KEY,
-    //     // teamId: process.env.APPLE_TEAM_ID,
-    //     // keyId: process.env.APPLE_KEY_ID,
-    //   },
-    //   redirectURI: 'http://localhost:3000/',
-    // }),
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,

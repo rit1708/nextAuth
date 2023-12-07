@@ -6,15 +6,18 @@ export default function Home() {
   const handleLoginWithGoogle = () => {
     signIn("google");
   };
-  async function handleAppleSignIn() {
-    await signIn("apple", {
-      callbackUrl: `${process?.env?.NEXTAUTH_URL}`,
-    });
-  }
+  const handleLoginWithApple = async () => {
+    try {
+      const result = await signIn('apple');
+      console.log(">?>>?", result);
+    } catch (error) {
+      console.error('Error signing in with Apple:', error);
+    }
+  };
   let loginElem = (
     <>
       <button className="p-3 bg-blue-600 text-white font-bold rounded" onClick={() => handleLoginWithGoogle()}>Login with Google</button>
-      <button className="p-3 bg-blue-600 text-white font-bold rounded" onClick={() => handleAppleSignIn()}>Login with Apple</button>
+      <button className="p-3 bg-blue-600 text-white font-bold rounded" onClick={() => handleLoginWithApple()}>Login with Apple</button>
     </>
   );
 
